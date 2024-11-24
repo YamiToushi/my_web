@@ -1,44 +1,70 @@
 import React, { useEffect } from 'react';
-import main from'../assets/sections2.JPG';
+import main from '../assets/sections2.JPG';
+import koreaFlag from '../assets/korean-flag.png'; 
+import manilaFlag from '../assets/manila-flag.png';
 
 const Section2 = ({ language }) => {
   const content = {
     en: {
-     
+
       countries: ['Korea', 'Manila'],
     },
     kor: {
-  
+    
       countries: ['노르웨이', '미국'],
     },
   };
 
   const timezones = ['Asia/Seoul', 'Asia/Manila'];
+  const flags = [koreaFlag, manilaFlag]; 
 
   useEffect(() => {
     function updateClocks() {
       document.querySelectorAll('.clock').forEach((clock, index) => {
-        const time = new Date().toLocaleTimeString('en-US', { timeZone: timezones[index], hour: '2-digit', minute: '2-digit' });
-        clock.textContent = time;
+        const now = new Date();
+        const time = now.toLocaleTimeString('en-US', {
+          timeZone: timezones[index],
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+        });
+
+        const date = now.toLocaleDateString('en-US', {
+          timeZone: timezones[index],
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        });
+
+        clock.innerHTML = `${time} <br /> ${date}`;
       });
     }
 
     const interval = setInterval(updateClocks, 1000);
-    updateClocks(); 
+    updateClocks();
 
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <section className="bg-white py-4">
-      <div className="container mx-auto px-2">
-        <h2 className="text-3xl font-bold mb-8 text-center ">{content[language].title}</h2>
+    <section className="bg-white py-2">
+      <div className="container mx-auto">
+       
         <div className="relative">
-          <img src={main} alt="Large Photo" className="w-full h-full rounded-lg shadow-lg" />
-          <div className="absolute top-40 left-0 w-full h-full flex justify-around items-start ">
+          <img
+            src={main}
+            alt="Large Photo"
+            className="w-full h-full rounded-lg shadow-lg"
+          />
+          <div className="absolute top-40 left-0 w-full h-full flex justify-around items-start">
             {content[language].countries.map((country, index) => (
               <div key={index} className="text-center">
-              
+                
+                <img
+                  src={flags[index]} 
+                  alt={`Flag of ${country}`}
+                  className="w-20 h-10  mx-auto" g
+                />
                 <p className="text-white font-bold">{country}</p>
                 <div className="clock text-white"></div>
               </div>
@@ -51,4 +77,3 @@ const Section2 = ({ language }) => {
 };
 
 export default Section2;
-

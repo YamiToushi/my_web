@@ -114,8 +114,8 @@ const Section1 = ({ language }) => {
   };
 
   return (
-    <section className="bg-gray-100 py-8">
-      <div className="container mx-auto px-4 flex flex-col md:flex-row items-stretch">
+    <section className="bg-gray-100 py-2">
+      <div className="container mx-auto px-2 flex flex-col md:flex-row items-stretch">
         {/* Left Image */}
         <div className="w-full md:w-1/2 flex-shrink-0">
           <div className="h-full">
@@ -126,13 +126,13 @@ const Section1 = ({ language }) => {
             />
           </div>
         </div>
-
+        
         {/* Right Dropdowns */}
         <div className="w-full md:w-1/2 md:pl-8 flex flex-col justify-center">
-          <div className="bg-gray-800 p-8 rounded-lg shadow-lg h-full">
-            <h2 className="text-3xl font-bold mb-4 text-white text-left">
-              {content[language].title}
-            </h2>
+        
+          <div className="bg-blue-900 p-8 rounded-lg shadow-lg h-full relative">
+         
+            
             {content[language].dropdowns.map((dropdown, index) => (
               <div
                 key={index}
@@ -140,7 +140,7 @@ const Section1 = ({ language }) => {
               >
                 {/* Main Dropdown Button */}
                 <button
-                  className="w-full text-left  text-white p-2 rounded hover:bg-gray-600 focus:outline-none"
+                  className="w-full text-left  text-white p-2 rounded hover:bg-blue-600 focus:outline-none"
                   onClick={() => toggleDropdown(index)}
                 >
                   {dropdown.title}
@@ -151,7 +151,7 @@ const Section1 = ({ language }) => {
                   <div className="mt-2  rounded text-white p-2">
                     {dropdown.subItems.map((subItem, subIndex) => (
                       <div key={subIndex} className="mb-2">
-                        <span className="w-full text-right  hover:bg-gray-600 p-2 rounded focus:outline-none">
+                        <span className="w-full text-right  hover:bg-blue-600 p-2 rounded focus:outline-none">
                           {subItem}
                         </span>
                       </div>
@@ -161,8 +161,12 @@ const Section1 = ({ language }) => {
               </div>
             ))}
           </div>
+          
         </div>
+        
       </div>
+      
+      
     </section>
   );
 };

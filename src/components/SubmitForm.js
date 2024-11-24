@@ -3,12 +3,12 @@ import React, { useState } from 'react';
 const SubmitForm = ({ language }) => {
   const content = {
     en: {
-      title: 'Submit Form',
+      title: 'Check and print progress status',
       Passport_No: 'Passport_No',
       fullName: 'Full Name',
       dateOfBirth: 'Date of Birth',
       confirmCode: 'Confirm Code',
-      submit: 'Submit',
+      submit: 'Search',
     },
     kor: {
       title: '양식 제출',
@@ -38,9 +38,9 @@ const SubmitForm = ({ language }) => {
 
   return (
     <section className="bg-white py-12">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-2">
         <h2 className="text-3xl font-bold mb-8 text-center">{content[language].title}</h2>
-        <form className="max-w-lg mx-auto" onSubmit={handleSubmit}>
+        <form className="max-w-full mx-auto" onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="mb-4">
               <label htmlFor="Passport_No" className="block text-gray-700 text-sm font-bold mb-2">
@@ -52,6 +52,7 @@ const SubmitForm = ({ language }) => {
                 name="Passport_No"
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 required
+                placeholder="Enter your password number"
               />
             </div>
             <div className="mb-4">
@@ -64,6 +65,7 @@ const SubmitForm = ({ language }) => {
                 name="fullname"
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 required
+                placeholder='Enter your full name'
               />
             </div>
             <div className="mb-4">
@@ -90,13 +92,14 @@ const SubmitForm = ({ language }) => {
                 onChange={(e) => setConfirmCode(e.target.value)}
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 required
+                placeholder='Enter your confirmation code'
               />
             </div>
           </div>
           <div className="flex items-center justify-center mt-6">
             <button
               type="submit"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              className="bg-blue-500 w-full hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             >
               {content[language].submit}
             </button>

@@ -1,58 +1,34 @@
-import React from 'react';
-
-const Footer = ({ language }) => {
-  const content = {
-    en: {
-      about: 'About Us',
-      description: 'A brief description of your company or website.',
-      quickLinks: 'Quick Links',
-      links: ['Home', 'About', 'Contact'],
-      contact: 'Contact Us',
-      email: 'Email: info@example.com',
-      phone: 'Phone: (123) 456-7890',
-      copyright: '© 2024 Your Company Name. All rights reserved.',
-    },
-    kor: {
-      about: '회사 소개',
-      description: '회사 또는 웹사이트에 대한 간단한 설명.',
-      quickLinks: '빠른 링크',
-      links: ['홈', '소개', '연락처'],
-      contact: '연락처',
-      email: '이메일: info@example.com',
-      phone: '전화: (123) 456-7890',
-      copyright: '© 2024 귀하의 회사 이름. 모든 권리 보유.',
-    },
-  };
-
+export default function Footer() {
   return (
-    <footer className="bg-gray-800 text-white py-8">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-wrap justify-between">
-          <div className="w-full md:w-1/3 mb-6 md:mb-0">
-            <h3 className="text-xl font-bold mb-2">{content[language].about}</h3>
-            <p className="text-gray-400">{content[language].description}</p>
+    <footer className="bg-gradient-to-br from-blue-900 to-blue-800 text-white py-8 px-6 md:px-12 relative overflow-hidden">
+      <div className="container mx-auto max-w-7xl relative z-10">
+        <div className="space-y-6">
+          <div className="space-y-2">
+            <h3 className="font-semibold">Copyright Notice ©</h3>
+            <p className="text-sm text-gray-200 max-w-3xl">
+              All Rights Reserved. The content of this website is protected by copyright law. Unauthorized copying,
+              reproduction, distribution, or any other use of the materials without explicit permission is prohibited.
+            </p>
           </div>
-          <div className="w-full md:w-1/3 mb-6 md:mb-0">
-            <h3 className="text-xl font-bold mb-2">{content[language].quickLinks}</h3>
-            <ul className="text-gray-400">
-              {content[language].links.map((link, index) => (
-                <li key={index}><a href="#some" className="hover:text-white">{link}</a></li>
-              ))}
-            </ul>
-          </div>
-          <div className="w-full md:w-1/3">
-            <h3 className="text-xl font-bold mb-2">{content[language].contact}</h3>
-            <p className="text-gray-400">{content[language].email}</p>
-            <p className="text-gray-400">{content[language].phone}</p>
+          
+          <div className="space-y-2">
+            <h3 className="font-semibold">저작권 고지 ©</h3>
+            <p className="text-sm text-gray-200 max-w-3xl">
+              모든 권리 보유. 이 웹사이트의 콘텐츠는 저작권법에 의해 보호됩니다. 명시적인 허가 없이 자료를 
+              복제, 복사, 배포하거나 기타 용도로 사용하는 것은 금지됩니다.
+            </p>
           </div>
         </div>
-        <div className="mt-8 text-center text-gray-400">
-          <p>{content[language].copyright}</p>
+        
+        <div className="mt-8 flex justify-end items-center space-x-2">
+          <span className="text-sm font-semibold whitespace-nowrap">
+            Military Manpower Administration
+          </span>
+          <div className="w-8 h-8 bg-white/10 rounded-full" aria-hidden="true" />
         </div>
       </div>
+      <div className="absolute left-0 top-0 w-40 h-full bg-blue-950 transform skew-x-12 origin-bottom-right -translate-x-1/4" aria-hidden="true" />
     </footer>
-  );
-};
-
-export default Footer;
+  )
+}
 

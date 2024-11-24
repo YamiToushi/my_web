@@ -1,53 +1,67 @@
 import React, { useState, useEffect } from 'react';
-import image1 from'../assets/1.jpeg';
-import image2 from'../assets/2.jpeg';
-import image3 from'../assets/3.jpeg';
-import image4 from'../assets/4.jpg';
-import image5 from'../assets/5.jpg';
-import image6 from'../assets/6.jpg';
+import image1 from '../assets/1.jpeg';
+import image2 from '../assets/2.jpeg';
+import image3 from '../assets/3.jpeg';
+import image4 from '../assets/4.jpg';
+import image5 from '../assets/5.jpg';
+import image6 from '../assets/6.jpg';
+
 const Section4 = ({ language }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [activeDropdown, setActiveDropdown] = useState(null);
+
   const handlePrevSlide = () => {
-    setCurrentSlide((prevSlide) => (prevSlide - 1 + 3) % 3); 
+    setCurrentSlide((prevSlide) => (prevSlide - 1 + 3) % 3);
   };
+
   const handleNextSlide = () => {
     setCurrentSlide((prevSlide) => (prevSlide + 1) % 3);
   };
 
   const images = [
-    "https://ik.imagekit.io/tvlk/blog/2020/02/Seoul-1.jpg",
-    "https://overseas.mofa.go.kr/upload/se2/ca5e002f-d885-40ea-a665-490e13d069fa.jpg",
-    "https://www.lowyinstitute.org/sites/default/files/styles/interpreter_article_image/public/GettyImages-1134201090.jpeg",
     image1,
+    'https://overseas.mofa.go.kr/upload/se2/ca5e002f-d885-40ea-a665-490e13d069fa.jpg',
     image2,
     image3,
+    'https://ik.imagekit.io/tvlk/blog/2020/02/Seoul-1.jpg',
     image4,
     image5,
+    'https://www.lowyinstitute.org/sites/default/files/styles/interpreter_article_image/public/GettyImages-1134201090.jpeg',
     image6,
   ];
+
   const content = {
     en: {
-     
       dropdowns: [
-        { title: 'Privacy Guidlines'},
-        { title: 'ROK Mission Overseas', content: 'Content for Dropdown 2' },
-        { title: 'Foreign Mission in ROK', content: 'Content for Dropdown 3' },
+        { title: 'Privacy Guidelines' },
+        {
+          title: 'ROK Mission Overseas',
+          items: ['Bahrain', 'Dubai', 'Norway'], // 3 items
+        },
+        {
+          title: 'Foreign Mission in ROK',
+          items: ['Qatar', 'Saudi', 'Schengen', 'USA'], // 4 items
+        },
       ],
     },
     kor: {
-   
       dropdowns: [
-        { title: '고정 콘텐츠', content: '이 섹션은 항상 표시되며 접을 수 없습니다.' },
-        { title: '드롭다운 2', content: '드롭다운 2의 내용' },
-        { title: '드롭다운 3', content: '드롭다운 3의 내용' },
+        { title: '개인정보 보호 지침' },
+        {
+          title: '해외 주재 대한민국 대사관',
+          items: ['바레인', '두바이', '노르웨이'],
+        },
+        {
+          title: '대한민국의 외국 공관',
+          items: ['카타르', '사우디', '셴겐', '미국'],
+        },
       ],
     },
   };
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentSlide((prevSlide) => (prevSlide + 1) % 3); 
+      setCurrentSlide((prevSlide) => (prevSlide + 1) % 3);
     }, 5000);
 
     return () => clearInterval(interval);
@@ -58,9 +72,9 @@ const Section4 = ({ language }) => {
   };
 
   return (
-    <section className="bg-gray-100 py-4">
+    <section className="bg-gray-100 py-2">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-8 text-center">{content[language].title}</h2>
+        <h2 className="text-3xl font-bold mb-8 text-center">{content[language]?.title}</h2>
 
         {/* Carousel */}
         <div className="relative py-2">
@@ -101,12 +115,11 @@ const Section4 = ({ language }) => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {/* Static Content */}
           <div className="border border-gray-200 rounded p-4 bg-white">
-            <h3 className="font-semibold">{content[language].dropdowns[0].title}</h3>
-           
+            <h3 className="font-semibold">{content[language]?.dropdowns[0]?.title}</h3>
           </div>
 
           {/* Collapsible Dropdowns */}
-          {content[language].dropdowns.slice(1).map((dropdown, index) => (
+          {content[language]?.dropdowns.slice(1).map((dropdown, index) => (
             <div key={index} className="relative border border-gray-200 rounded">
               <button
                 className="flex justify-between items-center w-full p-4 text-left bg-white hover:bg-gray-50 focus:outline-none"
@@ -120,7 +133,17 @@ const Section4 = ({ language }) => {
                   activeDropdown === index ? 'block' : 'hidden'
                 }`}
               >
-                <p>{dropdown.content}</p>
+              {dropdown.items.map((item, itemIndex) => (
+  <a
+    key={itemIndex}
+    href={`/visa/${item}.pdf`} // Corrected path
+    download={`${item}.pdf`} // Ensures proper filename
+    className="block text-blue-500 hover:underline"
+  >
+    {item}
+  </a>
+))}
+
               </div>
             </div>
           ))}

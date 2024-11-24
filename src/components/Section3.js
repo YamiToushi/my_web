@@ -25,7 +25,7 @@ const Section3 = ({ language }) => {
   };
 
   return (
-    <section className="bg-gray-100 py-12">
+    <section className="bg-gray-100 py-2">
       <div className="container mx-auto px-4">
 
 
