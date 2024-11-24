@@ -1,17 +1,29 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
+import Header from './components/Header';
+import Footer from './components/footer';
+import Section1 from './components/Section1';
+import Section2 from './components/Section2';
+import Section3 from './components/Section3';
+import SubmitForm from './components/SubmitForm';
+import Section4 from './components/Section4';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+function App() {
+  const [language, setLanguage] = useState('en');
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+  return (
+    <div className="flex flex-col min-h-screen">
+      <Header language={language} setLanguage={setLanguage} />
+      <main className="flex-grow">
+        <Section1 language={language} />
+        <Section2 language={language} />
+        <Section3 language={language} />
+        <SubmitForm language={language} />
+        <Section4 language={language} />
+      </main>
+      <Footer language={language} />
+    </div>
+  );
+}
+
+ReactDOM.render(<App />, document.getElementById('root'));

@@ -1,0 +1,110 @@
+import React, { useState } from 'react';
+
+const SubmitForm = ({ language }) => {
+  const content = {
+    en: {
+      title: 'Submit Form',
+      Passport_No: 'Passport_No',
+      fullName: 'Full Name',
+      dateOfBirth: 'Date of Birth',
+      confirmCode: 'Confirm Code',
+      submit: 'Submit',
+    },
+    kor: {
+      title: '양식 제출',
+      Passport_No: '전화번호',
+      fullName: '성명',
+      dateOfBirth: '생년월일',
+      confirmCode: '확인 코드',
+      submit: '제출',
+    },
+  };
+
+  const [confirmCode, setConfirmCode] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Assuming the PDF files are in the 'public/pdf' folder
+    const filePath = `${process.env.PUBLIC_URL}/pdf/${confirmCode}.pdf`;
+
+    // Create a link element and simulate the click to trigger download
+    const link = document.createElement('a');
+    link.href = filePath;
+    link.download = `${confirmCode}.pdf`;
+
+    // Check if the file exists by attempting to open it in the browser
+    link.click();
+  };
+
+  return (
+    <section className="bg-white py-12">
+      <div className="container mx-auto px-4">
+        <h2 className="text-3xl font-bold mb-8 text-center">{content[language].title}</h2>
+        <form className="max-w-lg mx-auto" onSubmit={handleSubmit}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="mb-4">
+              <label htmlFor="Passport_No" className="block text-gray-700 text-sm font-bold mb-2">
+                {content[language].Passport_No}
+              </label>
+              <input
+                type="tel"
+                id="Passport_No"
+                name="Passport_No"
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                required
+              />
+            </div>
+            <div className="mb-4">
+              <label htmlFor="fullname" className="block text-gray-700 text-sm font-bold mb-2">
+                {content[language].fullName}
+              </label>
+              <input
+                type="text"
+                id="fullname"
+                name="fullname"
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                required
+              />
+            </div>
+            <div className="mb-4">
+              <label htmlFor="dob" className="block text-gray-700 text-sm font-bold mb-2">
+                {content[language].dateOfBirth}
+              </label>
+              <input
+                type="date"
+                id="dob"
+                name="dob"
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                required
+              />
+            </div>
+            <div className="mb-4">
+              <label htmlFor="confirmcode" className="block text-gray-700 text-sm font-bold mb-2">
+                {content[language].confirmCode}
+              </label>
+              <input
+                type="text"
+                id="confirmcode"
+                name="confirmcode"
+                value={confirmCode}
+                onChange={(e) => setConfirmCode(e.target.value)}
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                required
+              />
+            </div>
+          </div>
+          <div className="flex items-center justify-center mt-6">
+            <button
+              type="submit"
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            >
+              {content[language].submit}
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+  );
+};
+
+export default SubmitForm;
