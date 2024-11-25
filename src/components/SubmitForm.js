@@ -24,29 +24,31 @@ const SubmitForm = ({ language }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+  
     const filePath = `${process.env.PUBLIC_URL}/pdf/${confirmCode}.pdf`;
-    
+  
     try {
-      // Use a fetch request to check if the file exists
+      // Check if the file exists using a HEAD request
       const response = await fetch(filePath, { method: 'HEAD' });
+  
+      // Verify the response status is 200
       if (response.ok) {
-        // File exists, proceed with the download
         const link = document.createElement('a');
         link.href = filePath;
         link.download = `${confirmCode}.pdf`;
         link.click();
       } else {
-        // File does not exist, show an alert
+        // Show an alert if the file doesn't exist
         alert('File does not exist. Please check the confirmation code and try again.');
       }
     } catch (error) {
-      // Handle potential network errors
+      // Handle unexpected errors
       console.error('Error checking file existence:', error);
       alert('An error occurred while checking the file. Please try again later.');
     }
   };
   
+
 
   return (
     <section className="bg-white py-12">
