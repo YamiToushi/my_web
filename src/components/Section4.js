@@ -65,11 +65,11 @@ const Section4 = ({ language }) => {
         { title: '개인정보 보호 지침' },
         {
           title: '해외 주재 대한민국 대사관',
-          items: ['바레인', '두바이', '노르웨이'],
+          items: ['Bahrain', 'Dubai', 'Norway'],
         },
         {
           title: '대한민국의 외국 공관',
-          items: ['카타르', '사우디', '셴겐', '미국'],
+          items: ['Qatar', 'Saudi', 'Schengen', 'USA'],
         },
       ],
     },
@@ -156,7 +156,7 @@ const Section4 = ({ language }) => {
                     className="flex items-center space-x-2 block text-blue-500 hover:underline"
                   >
                     <img
-                      src={flags[item]} // Use the flags mapping to get the correct image
+                      src={flags[item]} 
                       alt={`${item} flag`}
                       className="w-6 h-4 object-cover rounded"
                     />

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import main from '../assets/section1.jpg';
 
 const Section1 = ({ language }) => {
@@ -6,7 +6,6 @@ const Section1 = ({ language }) => {
 
   const content = {
     en: {
-     
       dropdowns: [
         {
           title: "General Guide",
@@ -28,7 +27,6 @@ const Section1 = ({ language }) => {
             "e-Form (Visa)",
             "Work and Visit Visa Lottery",
             "Change of Passport Information",
-            
           ],
         },
         {
@@ -36,7 +34,6 @@ const Section1 = ({ language }) => {
           subItems: [
             "Check Application Status & Print",
             "Work and Visit Lottery Results",
-            
           ],
         },
         {
@@ -47,15 +44,12 @@ const Section1 = ({ language }) => {
             "Global Talent Visa Center",
             "Financial Institution",
             "Notice",
-            "FAQ",            
+            "FAQ",
           ],
         },
         {
           title: "Korea Visa Application Center",
-          subItems: [
-            "KOICA",
-                      
-          ],
+          subItems: ["KOICA"],
         },
         {
           title: "Help Center",
@@ -64,13 +58,12 @@ const Section1 = ({ language }) => {
             "FAQ",
             "Archive",
             "How to Use Our Website",
-            "Survey"                      
+            "Survey",
           ],
         },
-        
       ],
     },
-    ko: {
+    kor: {
       dropdowns: [
         {
           title: "일반 가이드",
@@ -96,10 +89,7 @@ const Section1 = ({ language }) => {
         },
         {
           title: "신청 상태 확인",
-          subItems: [
-            "신청 상태 확인 및 출력",
-            "근로 및 방문 추첨 결과",
-          ],
+          subItems: ["신청 상태 확인 및 출력", "근로 및 방문 추첨 결과"],
         },
         {
           title: "투자 이민자",
@@ -114,19 +104,11 @@ const Section1 = ({ language }) => {
         },
         {
           title: "한국 비자 신청 센터",
-          subItems: [
-            "KOICA",
-          ],
+          subItems: ["KOICA"],
         },
         {
           title: "도움말 센터",
-          subItems: [
-            "공지사항",
-            "FAQ",
-            "자료실",
-            "웹사이트 사용 방법",
-            "설문조사",
-          ],
+          subItems: ["공지사항", "FAQ", "자료실", "웹사이트 사용 방법", "설문조사"],
         },
       ],
     },
@@ -136,11 +118,16 @@ const Section1 = ({ language }) => {
     setActiveDropdown(activeDropdown === index ? null : index);
   };
 
+  // Reset activeDropdown when language changes
+  useEffect(() => {
+    setActiveDropdown(null);
+  }, [language]);
+
   return (
     <section className="bg-gray-100 py-2">
       <div className="container mx-auto px-2 flex flex-col md:flex-row items-stretch">
         {/* Left Image */}
-        <div className="w-full md:w-1/2 flex-shrink-0">
+        <div className="w-full md:w-1/2 flex-shrink-0 p-2">
           <div className="h-full">
             <img
               src={main}
@@ -149,33 +136,31 @@ const Section1 = ({ language }) => {
             />
           </div>
         </div>
-        
+
         {/* Right Dropdowns */}
-        <div className="w-full md:w-1/2 py-2 md:pl-8 flex flex-col justify-center">
-        
+        <div className="w-full md:w-1/2 flex-shrink-0 p-2">
           <div className="bg-blue-900 p-8 rounded-lg shadow-lg h-full relative">
-         
-            
             {content[language].dropdowns.map((dropdown, index) => (
               <div
                 key={index}
-                className={`mb-4 ${activeDropdown !== null && activeDropdown !== index ? 'hidden' : ''}`}
+                className={`mb-4 ${
+                  activeDropdown !== null && activeDropdown !== index ? "hidden" : ""
+                }`}
               >
                 {/* Main Dropdown Button */}
                 <button
-                  className="w-full text-left  text-white p-2 rounded hover:bg-blue-600 focus:outline-none"
+                  className="w-full text-left text-white p-2 rounded hover:bg-blue-600 focus:outline-none"
                   onClick={() => toggleDropdown(index)}
-                  
                 >
                   {dropdown.title}
                 </button>
 
                 {/* Sub-items */}
                 {activeDropdown === index && (
-                  <div className="mt-2  rounded text-white p-2">
+                  <div className="mt-2 rounded text-white p-2">
                     {dropdown.subItems.map((subItem, subIndex) => (
                       <div key={subIndex} className="mb-2">
-                        <span className="w-full text-right  hover:bg-blue-600 p-2 rounded focus:outline-none">
+                        <span className="w-full text-right hover:bg-blue-600 p-2 rounded focus:outline-none">
                           {subItem}
                         </span>
                       </div>
@@ -185,12 +170,8 @@ const Section1 = ({ language }) => {
               </div>
             ))}
           </div>
-          
         </div>
-        
       </div>
-      
-      
     </section>
   );
 };

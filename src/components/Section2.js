@@ -6,11 +6,9 @@ import manilaFlag from '../assets/manila-flag.png';
 const Section2 = ({ language }) => {
   const content = {
     en: {
-
       countries: ['Korea', 'Manila'],
     },
     kor: {
-    
       countries: ['노르웨이', '미국'],
     },
   };
@@ -49,24 +47,22 @@ const Section2 = ({ language }) => {
   return (
     <section className="bg-white py-2">
       <div className="container mx-auto">
-       
         <div className="relative">
           <img
             src={main}
             alt="Large Photo"
             className="w-full h-full rounded-lg shadow-lg"
           />
-          <div className="absolute top-10 px-40 w-full h-full flex justify-between items-start">
+          <div className="absolute top-4 sm:top-10 px-4 sm:px-40 w-full h-full flex justify-between items-start">
             {content[language].countries.map((country, index) => (
               <div key={index} className="text-center">
-                
                 <img
-                  src={flags[index]} 
+                  src={flags[index]}
                   alt={`Flag of ${country}`}
-                  className="w-40 h-20  mx-auto" g
+                  className="w-16 h-10 sm:w-40 sm:h-24 mx-auto"
                 />
-                <p className="text-white font-bold">{country}</p>
-                <div className="clock text-white"></div>
+                <p className="text-white text-sm sm:text-base font-bold">{country}</p>
+                <div className="clock text-white text-xs sm:text-base"></div>
               </div>
             ))}
           </div>

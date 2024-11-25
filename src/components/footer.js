@@ -26,7 +26,7 @@ export default function Footer() {
           <span className="text-sm font-semibold whitespace-nowrap">
             Military Manpower Administration
           </span>
-          <div className="w-20 h-8 rounded-full" aria-hidden="true" ><img src={man} alt="Image 2" className="w-20 h-10" /></div>
+          <div className="w-20 h-8 rounded-full" aria-hidden="true" ><img src={man} alt="Image 2" className="w-20 h-12" /></div>
         </div>
       </div>
       <div className="absolute left-0 top-0 w-40 h-full bg-blue-950 transform skew-x-12 origin-bottom-right -translate-x-1/4" aria-hidden="true" />
