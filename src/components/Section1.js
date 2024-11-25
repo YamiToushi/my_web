@@ -128,7 +128,7 @@ const Section1 = ({ language }) => {
         </div>
         
         {/* Right Dropdowns */}
-        <div className="w-full md:w-1/2 md:pl-8 flex flex-col justify-center">
+        <div className="w-full md:w-1/2 py-2 md:pl-8 flex flex-col justify-center">
         
           <div className="bg-blue-900 p-8 rounded-lg shadow-lg h-full relative">
          
@@ -142,6 +142,7 @@ const Section1 = ({ language }) => {
                 <button
                   className="w-full text-left  text-white p-2 rounded hover:bg-blue-600 focus:outline-none"
                   onClick={() => toggleDropdown(index)}
+                  
                 >
                   {dropdown.title}
                 </button>

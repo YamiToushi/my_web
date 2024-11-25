@@ -5,6 +5,13 @@ import image3 from '../assets/3.jpeg';
 import image4 from '../assets/4.jpg';
 import image5 from '../assets/5.jpg';
 import image6 from '../assets/6.jpg';
+import bahrain from '../assets/flags/bahrain.png';
+import dubai from '../assets/flags/dubai.png';
+import europe from '../assets/flags/europe.png';
+import norway from '../assets/flags/norway.png';
+import qatar from '../assets/flags/qatar.png';
+import saudi from '../assets/flags/saudi.png';
+import usa from '../assets/flags/usa.png';
 
 const Section4 = ({ language }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -29,6 +36,15 @@ const Section4 = ({ language }) => {
     'https://www.lowyinstitute.org/sites/default/files/styles/interpreter_article_image/public/GettyImages-1134201090.jpeg',
     image6,
   ];
+  const flags = {
+    Bahrain: bahrain,
+    Dubai: dubai,
+    Norway: norway,
+    Qatar: qatar,
+    Saudi: saudi,
+    Schengen: europe,
+    USA: usa,
+  };
 
   const content = {
     en: {
@@ -140,15 +156,15 @@ const Section4 = ({ language }) => {
                     className="flex items-center space-x-2 block text-blue-500 hover:underline"
                   >
                     <img
-                      src={`../assets/flags/${item.toLowerCase()}.png`} 
+                      src={flags[item]} // Use the flags mapping to get the correct image
                       alt={`${item} flag`}
                       className="w-6 h-4 object-cover rounded"
                     />
                     <span>{item}</span>
                   </a>
                 ))}
-
               </div>
+
             </div>
           ))}
         </div>
