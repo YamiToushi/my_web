@@ -56,14 +56,14 @@ const Section2 = ({ language }) => {
             alt="Large Photo"
             className="w-full h-full rounded-lg shadow-lg"
           />
-          <div className="absolute top-40 left-0 w-full h-full flex justify-around items-start">
+          <div className="absolute top-10 px-40 w-full h-full flex justify-between items-start">
             {content[language].countries.map((country, index) => (
               <div key={index} className="text-center">
                 
                 <img
                   src={flags[index]} 
                   alt={`Flag of ${country}`}
-                  className="w-20 h-10  mx-auto" g
+                  className="w-40 h-20  mx-auto" g
                 />
                 <p className="text-white font-bold">{country}</p>
                 <div className="clock text-white"></div>

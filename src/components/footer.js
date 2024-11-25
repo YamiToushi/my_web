@@ -1,3 +1,5 @@
+import man from '../assets/manpower.png';
+
 export default function Footer() {
   return (
     <footer className="bg-gradient-to-br from-blue-900 to-blue-800 text-white py-8 px-6 md:px-12 relative overflow-hidden">
@@ -24,7 +26,7 @@ export default function Footer() {
           <span className="text-sm font-semibold whitespace-nowrap">
             Military Manpower Administration
           </span>
-          <div className="w-8 h-8 bg-white/10 rounded-full" aria-hidden="true" />
+          <div className="w-20 h-8 rounded-full" aria-hidden="true" ><img src={man} alt="Image 2" className="w-20 h-10" /></div>
         </div>
       </div>
       <div className="absolute left-0 top-0 w-40 h-full bg-blue-950 transform skew-x-12 origin-bottom-right -translate-x-1/4" aria-hidden="true" />

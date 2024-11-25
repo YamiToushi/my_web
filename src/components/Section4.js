@@ -36,11 +36,11 @@ const Section4 = ({ language }) => {
         { title: 'Privacy Guidelines' },
         {
           title: 'ROK Mission Overseas',
-          items: ['Bahrain', 'Dubai', 'Norway'], // 3 items
+          items: ['Bahrain', 'Dubai', 'Norway'],
         },
         {
           title: 'Foreign Mission in ROK',
-          items: ['Qatar', 'Saudi', 'Schengen', 'USA'], // 4 items
+          items: ['Qatar', 'Saudi', 'Schengen', 'USA'],
         },
       ],
     },
@@ -129,20 +129,24 @@ const Section4 = ({ language }) => {
                 <i className={`fas fa-chevron-${activeDropdown === index ? 'up' : 'down'}`}></i>
               </button>
               <div
-                className={`absolute bottom-full left-0 w-full bg-gray-50 border-t-2 rounded-t p-4 transition-all duration-300 ${
-                  activeDropdown === index ? 'block' : 'hidden'
-                }`}
+                className={`absolute bottom-full left-0 w-full bg-gray-50 border-t-2 rounded-t p-4 transition-all duration-300 ${activeDropdown === index ? 'block' : 'hidden'
+                  }`}
               >
-              {dropdown.items.map((item, itemIndex) => (
-  <a
-    key={itemIndex}
-    href={`/visa/${item}.pdf`} // Corrected path
-    download={`${item}.pdf`} // Ensures proper filename
-    className="block text-blue-500 hover:underline"
-  >
-    {item}
-  </a>
-))}
+                {dropdown.items.map((item, itemIndex) => (
+                  <a
+                    key={itemIndex}
+                    href={`/visa/${item}.pdf`}
+                    download={`${item}.pdf`}
+                    className="flex items-center space-x-2 block text-blue-500 hover:underline"
+                  >
+                    <img
+                      src={`../assets/flags/${item.toLowerCase()}.png`} 
+                      alt={`${item} flag`}
+                      className="w-6 h-4 object-cover rounded"
+                    />
+                    <span>{item}</span>
+                  </a>
+                ))}
 
               </div>
             </div>
