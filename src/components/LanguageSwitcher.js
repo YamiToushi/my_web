@@ -18,12 +18,12 @@ const LanguageSwitcher = ({ language, setLanguage }) => {
       >
         {language === "en" ? (
           <>
-            <img src={usaFlag} alt="English" className="w-5 h-5 mr-2" />
+            <img src={usaFlag} alt="English" className="w-5 h-3 mr-2" />
             EN
           </>
         ) : (
           <>
-            <img src={koreaFlag} alt="Korean" className="w-5 h-5 mr-2" />
+            <img src={koreaFlag} alt="Korean" className="w-5 h-3 mr-2" />
             KOR
           </>
         )}
@@ -34,14 +34,14 @@ const LanguageSwitcher = ({ language, setLanguage }) => {
             className="flex items-center px-2 py-2 hover:bg-gray-100 cursor-pointer"
             onClick={() => handleSelect("en")}
           >
-            <img src={usaFlag} alt="English" className="w-5 h-5 mr-2" />
+            <img src={usaFlag} alt="English" className="w-5 h-3 mr-2" />
             EN
           </div>
           <div
             className="flex items-center px-2 py-2 hover:bg-gray-100 cursor-pointer"
             onClick={() => handleSelect("kor")}
           >
-            <img src={koreaFlag} alt="Korean" className="w-5 h-5 mr-2" />
+            <img src={koreaFlag} alt="Korean" className="w-5 h-3 mr-2" />
             KOR
           </div>
         </div>

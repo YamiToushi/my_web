@@ -6,7 +6,7 @@ import manilaFlag from '../assets/manila-flag.png';
 const Section2 = ({ language }) => {
   const content = {
     en: {
-      countries: ['Korea', 'Manila'],
+      countries: ['Seoul', 'Manila'],
     },
     kor: {
       countries: ['서울', '마닐라'],
