@@ -125,9 +125,9 @@ const Section1 = ({ language }) => {
 
   return (
     <section className="bg-gray-100 py-2">
-      <div className="container mx-auto px-2 flex flex-col md:flex-row items-stretch">
+      <div className="container mx-auto  flex flex-col md:flex-row items-stretch">
         {/* Left Image */}
-        <div className="w-full md:w-1/2 flex-shrink-0 p-2">
+        <div className="w-full md:w-1/2 flex-shrink-0 pr-2">
           <div className="h-full">
             <img
               src={main}
@@ -138,7 +138,7 @@ const Section1 = ({ language }) => {
         </div>
 
         {/* Right Dropdowns */}
-        <div className="w-full md:w-1/2 flex-shrink-0 p-2">
+        <div className="w-full md:w-1/2 flex-shrink-0 pl-2">
           <div className="bg-blue-900 p-8 rounded-lg shadow-lg h-full relative">
             {content[language].dropdowns.map((dropdown, index) => (
               <div

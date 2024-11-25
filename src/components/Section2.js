@@ -9,7 +9,7 @@ const Section2 = ({ language }) => {
       countries: ['Korea', 'Manila'],
     },
     kor: {
-      countries: ['노르웨이', '미국'],
+      countries: ['서울', '마닐라'],
     },
   };
 

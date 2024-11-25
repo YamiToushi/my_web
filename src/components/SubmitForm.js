@@ -22,19 +22,31 @@ const SubmitForm = ({ language }) => {
 
   const [confirmCode, setConfirmCode] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Assuming the PDF files are in the 'public/pdf' folder
+    
     const filePath = `${process.env.PUBLIC_URL}/pdf/${confirmCode}.pdf`;
-
-    // Create a link element and simulate the click to trigger download
-    const link = document.createElement('a');
-    link.href = filePath;
-    link.download = `${confirmCode}.pdf`;
-
-    // Check if the file exists by attempting to open it in the browser
-    link.click();
+    
+    try {
+      // Use a fetch request to check if the file exists
+      const response = await fetch(filePath, { method: 'HEAD' });
+      if (response.ok) {
+        // File exists, proceed with the download
+        const link = document.createElement('a');
+        link.href = filePath;
+        link.download = `${confirmCode}.pdf`;
+        link.click();
+      } else {
+        // File does not exist, show an alert
+        alert('File does not exist. Please check the confirmation code and try again.');
+      }
+    } catch (error) {
+      // Handle potential network errors
+      console.error('Error checking file existence:', error);
+      alert('An error occurred while checking the file. Please try again later.');
+    }
   };
+  
 
   return (
     <section className="bg-white py-12">
